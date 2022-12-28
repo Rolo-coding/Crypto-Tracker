@@ -1,20 +1,20 @@
-import { useQuery } from 'react-query';
-import { fetchCoinHistory } from '../api';
-import ApexChart from 'react-apexcharts';
+import { useQuery } from 'react-query'
+import { fetchCoinHistory } from '../api'
+import ApexChart from 'react-apexcharts'
 
 interface IHistorical {
-  time_open: string;
-  time_close: string;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-  market_cap: number;
+  time_open: string
+  time_close: string
+  open: number
+  high: number
+  low: number
+  close: number
+  volume: number
+  market_cap: number
 }
 
 interface ChartProps {
-  coinId: string;
+  coinId: string
 }
 
 function Chart({ coinId }: ChartProps) {
@@ -22,9 +22,9 @@ function Chart({ coinId }: ChartProps) {
     ['ohlcv', coinId],
     () => fetchCoinHistory(coinId),
     {
-      refetchInterval: 10000,
+      refetchInterval: 10000
     }
-  );
+  )
   return (
     <div>
       {isLoading ? (
@@ -35,61 +35,61 @@ function Chart({ coinId }: ChartProps) {
           series={[
             {
               name: 'Price',
-              data: data?.map((price) => price.close),
-            },
+              data: data?.map(price => price.close)
+            }
           ]}
           options={{
             theme: {
-              mode: 'dark',
+              mode: 'dark'
             },
             chart: {
               height: 300,
               width: 500,
               toolbar: {
-                show: false,
+                show: false
               },
-              background: 'transparent',
+              background: 'transparent'
             },
             grid: {
-              show: false,
+              show: false
             },
             stroke: {
               curve: 'smooth',
-              width: 4,
+              width: 4
             },
             yaxis: {
               labels: {
-                show: false,
-              },
+                show: false
+              }
             },
             xaxis: {
               axisBorder: {
-                show: false,
+                show: false
               },
               axisTicks: {
-                show: false,
+                show: false
               },
               labels: {
-                show: false,
+                show: false
               },
               type: 'datetime',
-              categories: data?.map((price) => price.time_close),
+              categories: data?.map(price => price.time_close)
             },
             fill: {
               type: 'gradient',
-              gradient: { gradientToColors: ['#0be881'], stops: [0, 100] },
+              gradient: { gradientToColors: ['#0be881'], stops: [0, 100] }
             },
             colors: ['#0fbcf9'],
             tooltip: {
               y: {
-                formatter: (value) => `$${value.toFixed(2)}`,
-              },
-            },
+                formatter: value => `$${value.toFixed(2)}`
+              }
+            }
           }}
         />
       )}
     </div>
-  );
+  )
 }
 
-export default Chart;
+export default Chart

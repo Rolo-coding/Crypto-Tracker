@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
-import Router from './Router';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import Router from './Router'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -57,24 +57,24 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-weight: 300;
     font-family: 'Source Sans Pro', sans-sarif;
-    background-color: ${(props) => props.theme.bgColor};
-    color: ${(props) => props.theme.textColor};
+    background-color: ${props => props.theme.bgColor};
+    color: ${props => props.theme.textColor};
     line-height: 1.2;
   }
   a {
      text-decoration: none;
      color: inherit;
   }
-`;
+`
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ReactQueryDevtools initialIsOpen={false} />
     </>
-  );
+  )
 }
 
-export default App;
+export default App

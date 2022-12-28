@@ -1,6 +1,6 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import Coin from './routes/Coin';
-import Coins from './routes/Coins';
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import Coin from './routes/Coin'
+import Coins from './routes/Coins'
 
 function Router() {
   return (
@@ -10,7 +10,7 @@ function Router() {
         <Route path="/" element={<Coins />}></Route>
       </Routes>
     </HashRouter>
-  );
+  )
 }
 
-export default Router;
+export default Router
